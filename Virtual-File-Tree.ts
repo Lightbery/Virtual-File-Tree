@@ -171,7 +171,7 @@ export default class {
   }
 
   // Load Folder From The Real File System
-  loadFolderFromFS (realPath: string, virtualPath: string, options?: { recursive?: boolean }): void {
+  public loadFolderFromFS (realPath: string, virtualPath: string, options?: { recursive?: boolean }): void {
     if (!fs.existsSync(realPath)) throw new Error(`"${realPath}" Not Found`)
     if (!fs.statSync(realPath).isDirectory()) throw new Error(`"${realPath}" Is Not A Folder`)
 
@@ -191,7 +191,7 @@ export default class {
   }
 
   // Load File From The Real File System
-  loadFileFromFS (realPath: string, virtualPath: string, options?: { recursive?: boolean }): void {
+  public loadFileFromFS (realPath: string, virtualPath: string, options?: { recursive?: boolean }): void {
     if (!fs.existsSync(realPath)) throw new Error(`"${realPath}" Not Found`)
     if (!fs.statSync(realPath).isFile()) throw new Error(`"${realPath}" Is Not A File`)
 
