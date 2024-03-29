@@ -21,8 +21,10 @@ fileTree.writeFile('Test/A.txt', Buffer.from('hi'))
   * [readFile()](#readfile)
   * [exist()](#exist)
   * [getStat()](#getstat)
-  * [loadFolderFromFS](#loadfolderfromfs)
-  * [loadFileFromFS](#loadfilefromfs)
+  * [loadFolderFromFS()](#loadfolderfromfs)
+  * [loadFileFromFS()](#loadfilefromfs)
+* [FolderStat](#folderstat)
+* [FileStat](#filestat)
  
 # VirtualFileTree
 ```ts
@@ -104,3 +106,21 @@ new VirtualFileTree() // Create a virtual file tree
 * `virtualPath <string>` | The path of the file in the virtual file tree.
 
 > `return <FolderStat | FileStat>`
+
+# FolderStat
+```ts
+interface FolderStat {
+  type: 'folder',
+
+  childrens: number
+}
+```
+
+# FileStat
+```ts
+interface FolderStat {
+  type: 'file',
+
+  size: number
+}
+```
