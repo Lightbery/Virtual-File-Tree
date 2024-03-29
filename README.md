@@ -99,13 +99,31 @@ new VirtualFileTree() // Create a virtual file tree
 
 > `return <boolean>`
 
-## getStat
+## getStat()
 ```ts
 .getStat(<virtualPath>) // Get the stat of a file
 ```
 * `virtualPath <string>` | The path of the file in the virtual file tree.
 
 > `return <FolderStat | FileStat>`
+
+## loadFolderFromFS()
+```ts
+.loadFolderFromFS(<realPath>, <virtualPath>, <options>) // Load folder from the real file system
+```
+* `realPath <string>` | The path of the folder you want to load from.
+* `virtualPath <string>` | The path of the folder in the virtual file tree.
+* `options <undefined | object>` | Options for reading the folder.
+  * `recursive <boolean>` | If enable, it'll create the missing parent folders. `Default: false`
+
+## loadFileFromFS()
+```ts
+.loadFileFromFS(<realPath>, <virtualPath>, <options>) // Load file from the real file system
+```
+* `realPath <string>` | The path of the file you want to load from.
+* `virtualPath <string>` | The path of the file in the virtual file tree.
+* `options <undefined | object>` | Options for reading the folder.
+  * `recursive <boolean>` | If enable, it'll create the missing parent folders. `Default: false`
 
 # FolderStat
 ```ts
