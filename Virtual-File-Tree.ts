@@ -73,6 +73,26 @@ export default class {
     target[splittedPath[splittedPath.length - 1]] = { type: 'file', data }
   }
 
+  // Delete Folder Or File
+  public delete (virtualPath: string): void {
+    const currentPath: string[] = []
+
+    let target = this._fileTree.children
+
+    const splittedPath = virtualPath.split('/').filter((name) => name !== '')
+
+    splittedPath.slice(0, splittedPath.length - 1).forEach((folderName) => {
+      currentPath.push(folderName)
+
+      if (target[folderName] === undefined) throw new Error(`"${currentPath.join('/')}" Not Found`)
+      if (target[folderName].type === 'file') throw new Error(`"${currentPath.join('/')}" Is Not A Folder`)
+
+      target = (target[folderName] as Folder).children
+    })
+
+    delete target[splittedPath[splittedPath.length - 1]]
+  }
+
   // Read Folder
   public readFolder (virtualPath: string, options?: { recursive?: boolean, fullPath?: boolean, noFolder?: boolean }): string[] {
     if (options === undefined) options = {}

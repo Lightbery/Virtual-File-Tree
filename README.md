@@ -17,6 +17,7 @@ fileTree.writeFile('Test/A.txt', Buffer.from('hi'))
   * [saveFileTree()](#savefiletree)
   * [createFolder()](#createfolder)
   * [writeFile()](#writefile)
+  * [delete()](#delete)
   * [readFolder()](#readfolder)
   * [readFile()](#readfile)
   * [exist()](#exist)
@@ -66,6 +67,14 @@ new VirtualFileTree() // Create a virtual file tree
 * `data <Buffer>` | The data you want to write.
 * `options <undefined | object>` | Options for creating the file.
   * `recursive <boolean>` | If enable, it'll create the missing parent folders. `Default: false`
+
+> `return <undefined>`
+
+## delete()
+```ts
+.delete(<virtualPath>) // Delete folder or file 
+```
+* `virtualPath <string>` | The path of the file in the virtual file tree.
 
 > `return <undefined>`
  
