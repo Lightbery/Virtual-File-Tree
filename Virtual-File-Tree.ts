@@ -12,7 +12,7 @@ export default class {
 
     this._fileTree.children = {}
 
-    Object.keys(json).forEach((virtualPath) => this.writeFile(virtualPath, Buffer.from(json[virtualPath], 'base64'), { recursive: true }))
+    Object.keys(json).forEach((virtualPath) => this.writeFile(virtualPath, buffer.Buffer.from(json[virtualPath], 'base64'), { recursive: true }))
   }
 
   // Save File Tree
