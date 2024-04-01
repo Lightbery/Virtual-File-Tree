@@ -1,5 +1,6 @@
 import path from 'node:path'
 import fs from 'node:fs'
+import buffer from 'node:buffer'
 
 // Virtual File Tree
 export default class {
@@ -50,7 +51,7 @@ export default class {
   }
 
   // Write File
-  public writeFile (virtualPath: string, data: Buffer, options?: { recursive?: boolean }): void {
+  public writeFile (virtualPath: string, data: buffer.Buffer, options?: { recursive?: boolean }): void {
     if (options === undefined) options = {}
 
     const currentPath: string[] = []
@@ -230,7 +231,7 @@ interface Folder {
 interface File {
   type: 'file',
 
-  data: Buffer
+  data: buffer.Buffer
 }
 
 // Folder Stat
