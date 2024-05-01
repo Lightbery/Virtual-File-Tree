@@ -204,7 +204,7 @@ export default class {
       const stat = fs.statSync(path.join(realPath, fileName))
 
       if (stat.isDirectory()) {
-        this.createFolder(splittedPath.concat([virtualPath]).join('/'), options)
+        this.createFolder(splittedPath.concat([fileName]).join('/'), options)
 
         this.loadFolderFromFS(path.join(realPath, fileName), splittedPath.concat([fileName]).join('/'), options)
       } else if (stat.isFile()) this.writeFile(splittedPath.concat([fileName]).join('/'), fs.readFileSync(path.join(realPath, fileName)), options)

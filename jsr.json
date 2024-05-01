@@ -1,7 +1,7 @@
 {
   "name": "@lightbery/virtual-file-tree",
 
-  "version": "1.0.1",
+  "version": "1.0.2",
 
   "exports": "./Virtual-File-Tree.ts"
 }
