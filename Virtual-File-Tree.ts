@@ -123,7 +123,9 @@ export default class {
   }
 
   // Read File
-  public readFile (virtualPath: string, options?: { encoding?: 'utf8' | 'base64' | 'hex' }): any {
+  public readFile (virtualPath: string, options?: { encoding?: 'buffer' }): Buffer
+  public readFile (virtualPath: string, options?: { encoding: 'utf8' | 'base64' | 'hex' }): string 
+  public readFile (virtualPath: string, options?: { encoding?: 'buffer' | 'utf8' | 'base64' | 'hex' }): any {
     if (options === undefined) options = {}
 
     const currentPath: string[] = []
@@ -148,7 +150,7 @@ export default class {
 
     const data = (target[fileName] as File).data
 
-    return (options.encoding === undefined) ? data : data.toString(options.encoding)
+    return (options.encoding === 'buffer' || options.encoding === undefined) ? data : data.toString(options.encoding)
   }
 
   // Exist
