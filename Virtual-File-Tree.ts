@@ -1,6 +1,6 @@
 import path from 'node:path'
-import fs from 'node:fs'
 import buffer from 'node:buffer'
+import fs from 'node:fs'
 
 // Virtual File Tree
 export default class {
@@ -123,7 +123,7 @@ export default class {
   }
 
   // Read File
-  public readFile (virtualPath: string, options?: { encoding?: 'buffer' }): Buffer
+  public readFile (virtualPath: string, options?: { encoding?: 'buffer' }): buffer.Buffer 
   public readFile (virtualPath: string, options?: { encoding: 'utf8' | 'base64' | 'hex' }): string 
   public readFile (virtualPath: string, options?: { encoding?: 'buffer' | 'utf8' | 'base64' | 'hex' }): any {
     if (options === undefined) options = {}
