@@ -99,7 +99,7 @@ new VirtualFileTree() // Create a virtual file tree
 ```
 * `virtualPath <string>` | The path of the file in the virtual file tree.
 * `options <undefined | object>` | Options for reading the file.
-  * `encoding <'utf8' | 'base64' | 'hex'>` | The encoding of the data. `Default: undefined (data will be a Buffer)`
+  * `encoding <'buffer' | 'utf8' | 'base64' | 'hex'>` | The encoding of the data. `Default: 'buffer'`
 
 > `return <undefined>`
 
