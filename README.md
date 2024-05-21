@@ -88,7 +88,7 @@ new VirtualFileTree() // Create a virtual file tree
 * `virtualPath <string>` | The path of the folder in the virtual file tree.
 * `options <undefined | object>` | Options for reading the folder.
   * `recursive <boolean>` | Get all the children of the folder. `Default: false`
-  * `fullPath <boolean>` | Get the full path of the files. `Defau lt: false`
+  * `fullPath <boolean>` | Get the full path of the files. `Default: false`
   * `noFolder <boolean>` | Filter out folders. `Default: false`
 
 > `return <undefined>`
