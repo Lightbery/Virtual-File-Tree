@@ -43,14 +43,13 @@ new VirtualFileTree() // Create a virtual file tree
 ```
 * `data <string>` | The source you want to load the file tree (should be the output of `.saveFileTree()`).
 
-> `return <undefined>`
+> `return <void>`
 
 ## saveFileTree()
 ```ts
 .saveFileTree() // Save the file tree
 ```
-
-> `return <string>` (A JSON string)
+> `return <void>` (A JSON string)
 
 ## createFolder()
 ```ts
@@ -60,7 +59,7 @@ new VirtualFileTree() // Create a virtual file tree
 * `options <undefined | object>` | Options for creating the folder.
   * `recursive <boolean>` | If enable, it'll create the missing parent folders. `Default: false`
 
-> `return <undefined>`
+> `return <void>`
 
 ## writeFile()
 ```ts
@@ -71,14 +70,14 @@ new VirtualFileTree() // Create a virtual file tree
 * `options <undefined | object>` | Options for creating the file.
   * `recursive <boolean>` | If enable, it'll create the missing parent folders. `Default: false`
 
-> `return <undefined>`
+> `return <void>`
 
 ## delete()
 ```ts
 .delete(<virtualPath>) // Delete folder or file 
 ```
 * `virtualPath <string>` | The path of the file in the virtual file tree.
-
+* 
 > `return <undefined>`
  
 ## readFolder()
@@ -91,7 +90,7 @@ new VirtualFileTree() // Create a virtual file tree
   * `fullPath <boolean>` | Get the full path of the files. `Default: false`
   * `noFolder <boolean>` | Filter out folders. `Default: false`
 
-> `return <undefined>`
+> `return <void>`
 
 ## readFile()
 ```ts
@@ -101,7 +100,7 @@ new VirtualFileTree() // Create a virtual file tree
 * `options <undefined | object>` | Options for reading the file.
   * `encoding <'buffer' | 'utf8' | 'base64' | 'hex'>` | The encoding of the data. `Default: 'buffer'`
 
-> `return <undefined>`
+> `return <void>`
 
 ## exist()
 ```ts
@@ -128,6 +127,8 @@ new VirtualFileTree() // Create a virtual file tree
 * `options <undefined | object>` | Options for reading the folder.
   * `recursive <boolean>` | If enable, it'll create the missing parent folders. `Default: false`
 
+> `return <void>`
+
 ## loadFileFromFS()
 ```ts
 .loadFileFromFS(<realPath>, <virtualPath>, <options>) // Load file from the real file system
@@ -136,6 +137,8 @@ new VirtualFileTree() // Create a virtual file tree
 * `virtualPath <string>` | The path of the file in the virtual file tree.
 * `options <undefined | object>` | Options for reading the folder.
   * `recursive <boolean>` | If enable, it'll create the missing parent folders. `Default: false`
+
+> `return <void>`
 
 # FolderStat
 ```ts
