@@ -74,7 +74,7 @@ new VirtualFileTree() // Create a virtual file tree
 
 ## delete()
 ```ts
-.delete(<virtualPath>) // Delete folder or file 
+.delete(<virtualPath>) // Delete a folder or file 
 ```
 * `virtualPath <string>` | The path of the file in the virtual file tree.
 * 
@@ -104,19 +104,19 @@ new VirtualFileTree() // Create a virtual file tree
 
 ## exist()
 ```ts
-.exist(<virtualPath>) // Check if a file exist
+.exist(<virtualPath>) // Check if a path exist
 ```
 * `virtualPath <string>` | The path of the file in the virtual file tree.
 
 > `return <boolean>`
 
-## getStat()
+## getStats()
 ```ts
-.getStat(<virtualPath>) // Get the stat of a file
+.getStats(<virtualPath>) // Get the stats of a file
 ```
 * `virtualPath <string>` | The path of the file in the virtual file tree.
 
-> `return <FolderStat | FileStat>`
+> `return <FolderStats | FileStats>`
 
 ## loadFolderFromFS()
 ```ts
@@ -140,18 +140,18 @@ new VirtualFileTree() // Create a virtual file tree
 
 > `return <void>`
 
-# FolderStat
+# FolderStats
 ```ts
-interface FolderStat {
+interface FolderStats {
   type: 'folder',
 
   childrens: number
 }
 ```
 
-# FileStat
+# FileStats
 ```ts
-interface FolderStat {
+interface FolderStats {
   type: 'file',
 
   size: number

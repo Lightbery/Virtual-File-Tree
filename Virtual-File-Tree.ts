@@ -2,11 +2,11 @@ import path from 'node:path'
 import buffer from 'node:buffer'
 import fs from 'node:fs'
 
-// Virtual File Tree
+/** The virtual file tree itself */
 export default class {
   private _fileTree: Folder = { type: 'folder', children: {} }
 
-  // Load File Tree
+  /** Load the file tree */
   public loadFileTree (data: string): void {
     const json: { [key: string]: string } = JSON.parse(data)
 
@@ -15,7 +15,7 @@ export default class {
     Object.keys(json).forEach((virtualPath) => this.writeFile(virtualPath, buffer.Buffer.from(json[virtualPath], 'base64'), { recursive: true }))
   }
 
-  // Save File Tree
+  /** Save the file tree */ 
   public saveFileTree (): string {
     const data: { [key: string]: string } = {}
 
@@ -26,7 +26,7 @@ export default class {
     return JSON.stringify(data)
   }
   
-  // Create Folder
+  /** Create a folder */
   public createFolder (virtualPath: string, options?: { recursive?: boolean }): void {
     if (options === undefined) options = {}
 
@@ -50,7 +50,7 @@ export default class {
     target[splittedPath[splittedPath.length - 1]] = { type: 'folder', children: {} }
   }
 
-  // Write File
+  /** Write a file */ 
   public writeFile (virtualPath: string, data: buffer.Buffer, options?: { recursive?: boolean }): void {
     if (options === undefined) options = {}
 
@@ -74,7 +74,7 @@ export default class {
     target[splittedPath[splittedPath.length - 1]] = { type: 'file', data }
   }
 
-  // Delete Folder Or File
+  /** Delete a folder or file */
   public delete (virtualPath: string): void {
     const currentPath: string[] = []
 
@@ -94,7 +94,7 @@ export default class {
     delete target[splittedPath[splittedPath.length - 1]]
   }
 
-  // Read Folder
+  /** Read a folder */ 
   public readFolder (virtualPath: string, options?: { recursive?: boolean, fullPath?: boolean, noFolder?: boolean }): string[] {
     if (options === undefined) options = {}
 
@@ -122,7 +122,7 @@ export default class {
     return files
   }
 
-  // Read File
+  /** Read a file  */ 
   public readFile (virtualPath: string, options?: { encoding?: 'buffer' }): buffer.Buffer 
   public readFile (virtualPath: string, options?: { encoding: 'utf8' | 'base64' | 'hex' }): string 
   public readFile (virtualPath: string, options?: { encoding?: 'buffer' | 'utf8' | 'base64' | 'hex' }): any {
@@ -153,7 +153,7 @@ export default class {
     return (options.encoding === 'buffer' || options.encoding === undefined) ? data : data.toString(options.encoding)
   }
 
-  // Exist
+  /** Check if a path exist */ 
   public exist (virtualPath: string): boolean {
     let target = this._fileTree.children
 
@@ -168,8 +168,8 @@ export default class {
     return target[splittedPath[splittedPath.length - 1]] !== undefined
   }
 
-  // Get Stat
-  public getStat (virtualPath: string): FolderStat | FileStat {
+  /** Get the stat of a file */
+  public getStats (virtualPath: string): FolderStats | FileStats {
     const currentPath: string[] = []
 
     let target = this._fileTree.children
@@ -193,7 +193,7 @@ export default class {
     else return { type: 'file', size: (target[fileName] as File).data.length }
   }
 
-  // Load Folder From The Real File System
+  /** Load folder from the real file system */
   public loadFolderFromFS (realPath: string, virtualPath: string, options?: { recursive?: boolean }): void {
     if (!fs.existsSync(realPath)) throw new Error(`"${realPath}" Not Found`)
     if (!fs.statSync(realPath).isDirectory()) throw new Error(`"${realPath}" Is Not A Folder`)
@@ -213,7 +213,7 @@ export default class {
     })
   }
 
-  // Load File From The Real File System
+  /** Load file from the real file system */
   public loadFileFromFS (realPath: string, virtualPath: string, options?: { recursive?: boolean }): void {
     if (!fs.existsSync(realPath)) throw new Error(`"${realPath}" Not Found`)
     if (!fs.statSync(realPath).isFile()) throw new Error(`"${realPath}" Is Not A File`)
@@ -222,29 +222,29 @@ export default class {
   }
 }
 
-// Folder 
+/** A folder */
 interface Folder {
   type: 'folder',
 
   children: { [key: string]: Folder | File }
 }
 
-// File
+/** A file */
 interface File {
   type: 'file',
 
   data: buffer.Buffer
 }
 
-// Folder Stat
-interface FolderStat {
+/** A folder stats */
+interface FolderStats {
   type: 'folder',
 
   childrens: number
 }
 
-// File Stat
-interface FileStat {
+/** A file stats */
+interface FileStats {
   type: 'file',
 
   size: number
