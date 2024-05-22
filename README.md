@@ -12,7 +12,7 @@ fileTree.writeFile('Test/A.txt', Buffer.from('hi'))
 ```
 
 ## Installation
-You can copy simply `Virtual-File-Tree.ts` into your project or use [JSR to install](https://jsr.io/@lightbery/virtual-file-tree).
+You can simply copy `Virtual-File-Tree.ts` into your project or use [JSR to install](https://jsr.io/@lightbery/virtual-file-tree).
 
 ## Contents
 * [VirtualFileTree](#virtualfiletree)
