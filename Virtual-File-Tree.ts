@@ -124,7 +124,7 @@ export default class {
 
   /** Read a file  */ 
   public readFile (virtualPath: string, options?: { encoding?: 'buffer' }): buffer.Buffer 
-  public readFile (virtualPath: string, options?: { encoding: 'utf8' | 'base64' | 'hex' }): string 
+  public readFile (virtualPath: string, options?: { encoding?: 'utf8' | 'base64' | 'hex' }): string 
   public readFile (virtualPath: string, options?: { encoding?: 'buffer' | 'utf8' | 'base64' | 'hex' }): any {
     if (options === undefined) options = {}
 
