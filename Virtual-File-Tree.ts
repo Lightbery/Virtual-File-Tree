@@ -155,6 +155,8 @@ export default class {
 
   /** Check if a path exist */ 
   public exist (virtualPath: string): boolean {
+    if (virtualPath === '') return true
+
     let target = this._fileTree.children
 
     const splittedPath = virtualPath.split('/').filter((name) => name !== '')
@@ -170,6 +172,8 @@ export default class {
 
   /** Get the stat of a file */
   public getStats (virtualPath: string): FolderStats | FileStats {
+    if (virtualPath === '') return { type: 'folder', children: this.readFolder('', { recursive: true }).length }
+
     const currentPath: string[] = []
 
     let target = this._fileTree.children
@@ -189,7 +193,7 @@ export default class {
 
     if (target[fileName] === undefined) throw new Error(`"${currentPath.concat([fileName]).join('/')}" Not Found`)
 
-    if (target[fileName].type === 'folder') return { type: 'folder', childrens: this.readFolder(virtualPath, { recursive: true }).length } 
+    if (target[fileName].type === 'folder') return { type: 'folder', children: this.readFolder(virtualPath, { recursive: true }).length } 
     else return { type: 'file', size: (target[fileName] as File).data.length }
   }
 
@@ -240,7 +244,7 @@ interface File {
 interface FolderStats {
   type: 'folder',
 
-  childrens: number
+  children: number
 }
 
 /** A file stats */
